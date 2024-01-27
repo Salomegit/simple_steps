@@ -1,4 +1,4 @@
-import "../src/styles/index.css"
+import "./styles/index.css"
 
 import {useState} from "react"
 
@@ -18,13 +18,20 @@ function App() {
 
 
   function handleNest() {
-    setStep (step + 1)
+    if(step<3)setStep (step + 1)
     
   }
   function handlePrevious(){
-    setStep (step - 1)
+    if(step>1)setStep (step - 1)
 
   }
+ 
+  fetch("http://catfact.ninja/fact")
+  .then(res => res.json())
+ .then(data => {console.log(data);})
+ .catch(error => { console.error('Error fetching data:', error); });
+
+
 
   return(
 
